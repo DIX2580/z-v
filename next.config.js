@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
       // Uncomment and configure domains if you need to handle external images
-      // domains: ['example.com'],
+      domains: ['zenexinfo.com'],
   },
 };
 
