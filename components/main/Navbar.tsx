@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const menuVariants = {
     hidden: { opacity: 0, y: -20 },
-    visible: (i:number) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
@@ -41,7 +41,6 @@ const Navbar = () => {
           <Link href="/about" className="menu-link">About</Link>
           <Link href="/services" className="menu-link">Our Services</Link>
           <Link href="/Our-Projects" className="menu-link">Our Projects</Link>
-
           <Link href="/career" className="menu-link">Career</Link>
           <Link href="/contact" className="menu-link">Contact Us</Link>
         </div>
@@ -66,16 +65,23 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden backdrop-blur-sm bg-[#03001417]/90 shadow-lg transition-all duration-300">
           <div className="flex flex-col items-center mt-2 space-y-2 py-2 animate-dropdown">
-            {['/', '/About', '/Services','/Our-Projects', '/Career', '/Contact'].map((href, index) => (
+            {[
+              { href: "/", text: "Home" },
+              { href: "/about", text: "About Us" },
+              { href: "/services", text: "Services" },
+              { href: "/Our-Projects", text: "Projects" },
+              { href: "/career", text: "Careers" },
+              { href: "/contact", text: "Contact" },
+            ].map((link, index) => (
               <motion.div
-                key={href}
+                key={link.href}
                 custom={index}
                 initial="hidden"
                 animate="visible"
                 variants={menuVariants}
                 className="menu-link"
               >
-                <Link href={href}>{href.replace('/', '') || 'Home'}</Link>
+                <Link href={link.href}>{link.text}</Link>
               </motion.div>
             ))}
 
